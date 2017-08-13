@@ -1,0 +1,21 @@
+<div class="containter">
+  <%= render partial: "builder", locals: {first: true} %>
+  <div class="container">
+    <h5>
+      First, choose a title and a description for your survey.
+    </h5>
+
+    <%= form_for @survey do |f| %>
+      <div class="form-group">
+        <%= f.label :title %>
+        <%= f.text_field :title, placeholder: "eg. The pesonality test", class:"form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :description %>
+        <%= f.text_area :description, placeholder: "eg. Discovering", class:"form-control" %>
+      </div>
+      <%= f.submit "Create Survey and Begin Adding Questions", class: "btn btn-lg btn-primary"%>
+    <% end %>
+
+  </div>
+</div>

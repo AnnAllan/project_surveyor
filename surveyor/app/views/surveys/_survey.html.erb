@@ -1,0 +1,14 @@
+<div class="container">
+  <% @surveys.each do |s| %>
+    <h4><%= s.id %>. <%= s.title %></h4>
+    <br />
+    <p>
+      <%= s.description %>
+    </p>
+    <br />
+    <h5><%= s.responses %> Responses</h5>
+    <%= link_to "Take Survey", survey_path(s.id), class: "btn btn-default" %>
+    <%= link_to "View Results", "#", class: "btn btn-default" %>
+  <% end %>
+
+</div>
