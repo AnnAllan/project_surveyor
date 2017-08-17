@@ -1,0 +1,20 @@
+<div class="containter">
+  <%= render partial: "surveys/builder", locals: {first: false} %>
+  <div class="container">
+    <h5>Next, fill in the questions.</h5>
+  </div>
+  <%= render partial: "survey_info", locals: {survey: @survey} %>
+  <div class="container">
+    <h3>Add a Question:</h3>
+    <h5>Choose which type of question to add.</h5>
+    <%= form_for @question do |f| %>
+      <%= f.hidden_field :survey_id, value: "#{@survey.id}"  %>
+      <%= f.collection_select(:question_type,
+                              QuestionType.all,
+                              :id,
+                              :name) %><br /><br />
+      <%= f.submit "Add a New Question", class:"btn btn-primary" %>
+    <% end %>
+    <%= render partial: "question" %>
+  </div>
+</div>

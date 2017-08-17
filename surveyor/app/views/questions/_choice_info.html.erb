@@ -1,0 +1,32 @@
+<div class="container" >
+  <%= render partial: "surveys/builder", locals: {first: false} %>
+  <h4>Next, fill in the questions.</h4>
+  <%= render partial: "survey_info", locals: {survey: @survey} %>
+  <h2>Add a Multiple Choice Question:</h2>
+  <h3><strong>1. Select Option</strong> | 2. Add Question Text</h3>
+  <%= form_for @question do |f| %>
+    <%= f.hidden_field :id, value: "#{Question.last.id}" %>
+    <div class="form-group">
+      <%= f.label :option_number, "How many options should the question have?"%>
+      <br />
+      <%= f.select :option_number, (1..4) %>
+    </div>
+    <div class="form-group">
+      <h4>How many options can be selected?</h4>
+      <%= f.label :selectons_allowed, "Just One" %>
+      <%= f.radio_button("selections_allowed", "Just One") %>
+      <br />
+      <%= f.label :selections_allowed, "Multiple" %>
+      <%= f.radio_button("selections_allowed", "Multiple") %>
+    </div>
+    <div class="form-group">
+      <h4>Is this question required?</h4>
+      <%= f. label :required, "Yes" %>
+      <%= f.radio_button(:required, "Yes") %>
+      <br />
+      <%= f. label :required, "No" %>
+      <%= f.radio_button(:required, "No") %>
+    </div>
+    <%= f.submit 'Continue to the Next Step', :class => 'btn btn-primary' %>
+  <% end %>
+</div>

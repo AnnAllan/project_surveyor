@@ -12,7 +12,7 @@ class SurveysController < ApplicationController
     @survey = Survey.new(safe_survey_params)
     if @survey.save
       flash[:success] = "Survey created."
-      redirect_to root_path
+      redirect_to new_question_path(@survey)
     else
       flash.now[:error] = "Survey could not be created."
       render :new
